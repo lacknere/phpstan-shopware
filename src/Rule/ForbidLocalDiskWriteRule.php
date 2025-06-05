@@ -126,7 +126,8 @@ class ForbidLocalDiskWriteRule implements Rule
         }
 
         return [
-            RuleErrorBuilder::message('Usage of file_put_contents is forbidden. Use temporary directory with sys_get_temp_dir() if needed.')
+            RuleErrorBuilder::message('Usage of file_put_contents is forbidden to local files. Use temporary directory with sys_get_temp_dir() if needed.')
+                ->addTip('Use flysystem instead https://developer.shopware.com/docs/guides/plugins/plugins/framework/filesystem/filesystem.html')
                 ->line($node->getLine())
                 ->identifier('shopware.forbidLocalDiskWrite')
                 ->build(),
@@ -154,7 +155,8 @@ class ForbidLocalDiskWriteRule implements Rule
                 }
 
                 return [
-                    RuleErrorBuilder::message('Usage of fopen with write mode is forbidden. Use temporary directory with sys_get_temp_dir() if needed.')
+                    RuleErrorBuilder::message('Usage of fopen with write mode is forbidden to local files. Use temporary directory with sys_get_temp_dir() if needed.')
+                        ->addTip('Use flysystem instead https://developer.shopware.com/docs/guides/plugins/plugins/framework/filesystem/filesystem.html')
                         ->line($node->getLine())
                         ->identifier('shopware.forbidLocalDiskWrite')
                         ->build(),
@@ -182,7 +184,8 @@ class ForbidLocalDiskWriteRule implements Rule
         }
 
         return [
-            RuleErrorBuilder::message('Usage of symlink is forbidden. Use temporary directory with sys_get_temp_dir() if needed.')
+            RuleErrorBuilder::message('Usage of symlink is forbidden to local files. Use temporary directory with sys_get_temp_dir() if needed.')
+                ->addTip('Use flysystem instead https://developer.shopware.com/docs/guides/plugins/plugins/framework/filesystem/filesystem.html')
                 ->line($node->getLine())
                 ->identifier('shopware.forbidLocalDiskWrite')
                 ->build(),
@@ -205,7 +208,8 @@ class ForbidLocalDiskWriteRule implements Rule
         }
 
         return [
-            RuleErrorBuilder::message('Usage of mkdir is forbidden. Use temporary directory with sys_get_temp_dir() if needed.')
+            RuleErrorBuilder::message('Usage of mkdir is forbidden to local files. Use temporary directory with sys_get_temp_dir() if needed.')
+                ->addTip('Use flysystem instead https://developer.shopware.com/docs/guides/plugins/plugins/framework/filesystem/filesystem.html')
                 ->line($node->getLine())
                 ->identifier('shopware.forbidLocalDiskWrite')
                 ->build(),
@@ -228,7 +232,8 @@ class ForbidLocalDiskWriteRule implements Rule
         }
 
         return [
-            RuleErrorBuilder::message('Usage of rmdir is forbidden. Use temporary directory with sys_get_temp_dir() if needed.')
+            RuleErrorBuilder::message('Usage of rmdir is forbidden to local files. Use temporary directory with sys_get_temp_dir() if needed.')
+                ->addTip('Use flysystem instead https://developer.shopware.com/docs/guides/plugins/plugins/framework/filesystem/filesystem.html')
                 ->line($node->getLine())
                 ->identifier('shopware.forbidLocalDiskWrite')
                 ->build(),
@@ -251,7 +256,8 @@ class ForbidLocalDiskWriteRule implements Rule
         }
 
         return [
-            RuleErrorBuilder::message('Usage of unlink is forbidden. Use temporary directory with sys_get_temp_dir() if needed.')
+            RuleErrorBuilder::message('Usage of unlink is forbidden to local files. Use temporary directory with sys_get_temp_dir() if needed.')
+                ->addTip('Use flysystem instead https://developer.shopware.com/docs/guides/plugins/plugins/framework/filesystem/filesystem.html')
                 ->line($node->getLine())
                 ->identifier('shopware.forbidLocalDiskWrite')
                 ->build(),
@@ -276,7 +282,8 @@ class ForbidLocalDiskWriteRule implements Rule
         }
 
         return [
-            RuleErrorBuilder::message('Usage of rename is forbidden. Use temporary directory with sys_get_temp_dir() if needed.')
+            RuleErrorBuilder::message('Usage of rename is forbidden to local files. Use temporary directory with sys_get_temp_dir() if needed.')
+                ->addTip('Use flysystem instead https://developer.shopware.com/docs/guides/plugins/plugins/framework/filesystem/filesystem.html')
                 ->line($node->getLine())
                 ->identifier('shopware.forbidLocalDiskWrite')
                 ->build(),
@@ -314,6 +321,7 @@ class ForbidLocalDiskWriteRule implements Rule
 
             return [
                 RuleErrorBuilder::message('Usage of ZipArchive::open with create mode is forbidden. Use temporary directory with sys_get_temp_dir() if needed.')
+                    ->addTip('Use flysystem instead https://developer.shopware.com/docs/guides/plugins/plugins/framework/filesystem/filesystem.html')
                     ->line($node->getLine())
                     ->identifier('shopware.forbidLocalDiskWrite')
                     ->build(),
@@ -395,7 +403,8 @@ class ForbidLocalDiskWriteRule implements Rule
         }
 
         return [
-            RuleErrorBuilder::message(sprintf('Usage of Symfony Filesystem::%s is forbidden. Use temporary directory with sys_get_temp_dir() if needed.', $methodName))
+            RuleErrorBuilder::message(sprintf('Usage of Symfony Filesystem::%s is forbidden to local files. Use temporary directory with sys_get_temp_dir() if needed.', $methodName))
+                ->addTip('Use flysystem instead https://developer.shopware.com/docs/guides/plugins/plugins/framework/filesystem/filesystem.html')
                 ->line($node->getLine())
                 ->identifier('shopware.forbidLocalDiskWrite')
                 ->build(),
