@@ -55,7 +55,7 @@ class InternalFunctionCallRule implements Rule
         return [
             RuleErrorBuilder::message(sprintf('Call of internal function %s Please refrain from using functions which are annotated with @internal in the Shopware 6 repository.', $function->getName()))
                 ->line($node->getLine())
-                ->identifier('shopware.internal_function_call')
+                ->identifier('shopware.internalFunctionCall')
                 ->build(),
         ];
     }

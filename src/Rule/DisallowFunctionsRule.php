@@ -44,7 +44,7 @@ class DisallowFunctionsRule implements Rule
             return [
                 RuleErrorBuilder::message(\sprintf('Do not use %s function in code.', $name))
                     ->line($node->getLine())
-                    ->identifier('shopware.disallow_functions')
+                    ->identifier('shopware.disallowFunctions')
                     ->build(),
             ];
         }
