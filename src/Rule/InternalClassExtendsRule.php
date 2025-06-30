@@ -43,7 +43,7 @@ class InternalClassExtendsRule implements Rule
             return [
                 RuleErrorBuilder::message(sprintf('Class %s extends internal class %s. Please refrain from extending classes which are annotated with @internal.', (string) $node->name, $parentClassName))
                     ->line($node->getLine())
-                    ->identifier('shopware.internal.class.extends')
+                    ->identifier('shopware.internalClassExtends')
                     ->build(),
             ];
         }

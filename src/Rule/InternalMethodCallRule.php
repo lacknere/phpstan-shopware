@@ -63,7 +63,7 @@ class InternalMethodCallRule implements Rule
             if (!NamespaceChecker::arePartOfTheSamePackage($scope->getNamespace(), $methodOwnerNamespace)) {
                 return [
                     RuleErrorBuilder::message(sprintf('Call of internal method %s::%s Please refrain from using methods which are annotated with @internal in the Shopware 6 repository.', $classInfo->getName(), $methodDetails->getName()))
-                        ->identifier('shopware.internal_method_call')
+                        ->identifier('shopware.internalMethodCall')
                         ->build(),
                 ];
             }
