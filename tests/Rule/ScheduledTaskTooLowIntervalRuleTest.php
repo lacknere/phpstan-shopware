@@ -14,7 +14,7 @@ class ScheduledTaskTooLowIntervalRuleTest extends RuleTestCase
     {
         $this->analyse([__DIR__ . '/fixtures/ScheduledTaskTooLowIntervalRule/too-low-interval.php'], [
             [
-                'Scheduled task has an interval of 1 seconds, it should have an minimum of 3600 seconds.',
+                'Scheduled task has an interval of 1 seconds, it should have an minimum of 300 seconds.',
                 14,
             ],
         ]);
