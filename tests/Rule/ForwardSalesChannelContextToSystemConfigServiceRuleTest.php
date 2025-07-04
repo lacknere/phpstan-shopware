@@ -19,14 +19,6 @@ class ForwardSalesChannelContextToSystemConfigServiceRuleTest extends RuleTestCa
         $this->analyse([__DIR__ . '/fixtures/ForwardSalesChannelContextToSystemConfigServiceRule/wrong-usage.php'], [
             [
                 'SystemConfigService methods expects a salesChannelId as second parameter. When a method gets a SalesChannelContext passed and that parameter is not forwarded to SystemConfigService we should throw an phpstan error',
-                19,
-            ],
-            [
-                'SystemConfigService methods expects a salesChannelId as second parameter. When a method gets a SalesChannelContext passed and that parameter is not forwarded to SystemConfigService we should throw an phpstan error',
-                20,
-            ],
-            [
-                'SystemConfigService methods expects a salesChannelId as second parameter. When a method gets a SalesChannelContext passed and that parameter is not forwarded to SystemConfigService we should throw an phpstan error',
                 21,
             ],
             [
@@ -36,6 +28,14 @@ class ForwardSalesChannelContextToSystemConfigServiceRuleTest extends RuleTestCa
             [
                 'SystemConfigService methods expects a salesChannelId as second parameter. When a method gets a SalesChannelContext passed and that parameter is not forwarded to SystemConfigService we should throw an phpstan error',
                 23,
+            ],
+            [
+                'SystemConfigService methods expects a salesChannelId as second parameter. When a method gets a SalesChannelContext passed and that parameter is not forwarded to SystemConfigService we should throw an phpstan error',
+                24,
+            ],
+            [
+                'SystemConfigService methods expects a salesChannelId as second parameter. When a method gets a SalesChannelContext passed and that parameter is not forwarded to SystemConfigService we should throw an phpstan error',
+                25,
             ],
         ]);
     }
