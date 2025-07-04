@@ -16,7 +16,7 @@ class WrongUsage
         $this->systemConfigService = $systemConfigService;
     }
 
-    public function wrong(SalesChannelContext $context): void
+    public function wrong(SalesChannelContext $salesChannelContext): void
     {
         $this->systemConfigService->get('foo.bar');
         $this->systemConfigService->getString('foo.bar');

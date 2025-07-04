@@ -16,13 +16,13 @@ class CorrectUsage
         $this->systemConfigService = $systemConfigService;
     }
 
-    public function correct(SalesChannelContext $context): void
+    public function correct(SalesChannelContext $salesChannelContext): void
     {
-        $this->systemConfigService->get('foo.bar', $context->getSalesChannelId());
-        $this->systemConfigService->getString('foo.bar', $context->getSalesChannel()->getId());
-        $this->systemConfigService->getInt('foo.bar', $context->getSalesChannelId());
-        $this->systemConfigService->getFloat('foo.bar', $context->getSalesChannelId());
-        $this->systemConfigService->getBool('foo.bar', $context->getSalesChannelId());
+        $this->systemConfigService->get('foo.bar', $salesChannelContext->getSalesChannelId());
+        $this->systemConfigService->getString('foo.bar', $salesChannelContext->getSalesChannel()->getId());
+        $this->systemConfigService->getInt('foo.bar', $salesChannelContext->getSalesChannelId());
+        $this->systemConfigService->getFloat('foo.bar', $salesChannelContext->getSalesChannelId());
+        $this->systemConfigService->getBool('foo.bar', $salesChannelContext->getSalesChannelId());
     }
 
     public function correctWithoutContext(): void

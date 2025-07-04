@@ -33,13 +33,17 @@ class ForwardSalesChannelContextToSystemConfigServiceRule implements Rule
             return [];
         }
 
-        if (!$scope->hasVariableType('context')->yes()) {
-            return [];
+        $salesChannelContextVarName = null;
+
+        foreach ($scope->getDefinedVariables() as $variableName) {
+            $variableType = $scope->getVariableType($variableName);
+            if ((new ObjectType(SalesChannelContext::class))->isSuperTypeOf($variableType)->yes()) {
+                $salesChannelContextVarName = $variableName;
+                break;
+            }
         }
 
-        $contextVar = $scope->getVariableType('context');
-
-        if (!(new ObjectType(SalesChannelContext::class))->isSuperTypeOf($contextVar)->yes()) {
+        if ($salesChannelContextVarName === null) {
             return [];
         }
 
@@ -55,7 +59,7 @@ class ForwardSalesChannelContextToSystemConfigServiceRule implements Rule
 
         if ($salesChannelId instanceof MethodCall
             && $salesChannelId->var instanceof Node\Expr\Variable
-            && $salesChannelId->var->name === 'context'
+            && $salesChannelId->var->name === $salesChannelContextVarName
             && $salesChannelId->name instanceof Identifier
             && $salesChannelId->name->name === 'getSalesChannelId'
         ) {
@@ -65,7 +69,7 @@ class ForwardSalesChannelContextToSystemConfigServiceRule implements Rule
         if ($salesChannelId instanceof MethodCall
             && $salesChannelId->var instanceof MethodCall
             && $salesChannelId->var->var instanceof Node\Expr\Variable
-            && $salesChannelId->var->var->name === 'context'
+            && $salesChannelId->var->var->name === $salesChannelContextVarName
             && $salesChannelId->var->name instanceof Identifier
             && $salesChannelId->var->name->name === 'getSalesChannel'
             && $salesChannelId->name instanceof Identifier
