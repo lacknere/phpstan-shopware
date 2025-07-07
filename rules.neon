@@ -18,6 +18,7 @@ rules:
     - Shopware\PhpStan\Rule\ForbidLocalDiskWriteRule
     - Shopware\PhpStan\Rule\BestPractise\PreferRouteEventRule
     - Shopware\PhpStan\Rule\BestPractise\DALDefinitionRule
+    - Shopware\PhpStan\Rule\ForwardSalesChannelContextToSystemConfigServiceRule
 
 services:
     -
