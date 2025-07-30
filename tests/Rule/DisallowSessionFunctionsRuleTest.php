@@ -24,15 +24,15 @@ class DisallowSessionFunctionsRuleTest extends RuleTestCase
             __DIR__ . '/fixtures/DisallowSessionFunctionsRule/wrong-usage.php',
         ], [
             [
-                'Do not use session_write_close() function in code. Use the Session from the Request instead.',
+                'Do not use session_write_close() function in code. Use the Symfony Session component from the Request object instead.',
                 5,
             ],
             [
-                'Do not use session_start() function in code. Use the Session from the Request instead.',
+                'Do not use session_start() function in code. Use the Symfony Session component from the Request object instead.',
                 6,
             ],
             [
-                'Do not use session_destroy() function in code. Use the Session from the Request instead.',
+                'Do not use session_destroy() function in code. Use the Symfony Session component from the Request object instead.',
                 7,
             ],
         ]);
