@@ -14,8 +14,14 @@ use PHPStan\Rules\RuleErrorBuilder;
 /**
  * @implements Rule<FuncCall>
  */
-class DisallowSessionWriteCloseRule implements Rule
+class DisallowSessionFunctionsRule implements Rule
 {
+    private const NOT_ALLOWED_FUNCTIONS = [
+        'session_write_close',
+        'session_start',
+        'session_destroy',
+    ];
+
     public function getNodeType(): string
     {
         return FuncCall::class;
@@ -32,11 +38,11 @@ class DisallowSessionWriteCloseRule implements Rule
 
         $name = $node->name->toString();
 
-        if ($name === 'session_write_close') {
+        if (\in_array($name, self::NOT_ALLOWED_FUNCTIONS, true)) {
             return [
-                RuleErrorBuilder::message('Do not use session_write_close() function in code. Use $request->getSession()->save() instead.')
+                RuleErrorBuilder::message(\sprintf('Do not use %s() function in code. Use the Session from the Request instead.', $name))
                     ->line($node->getLine())
-                    ->identifier('shopware.disallowSessionWriteClose')
+                    ->identifier('shopware.disallowSessionFunctions')
                     ->build(),
             ];
         }
