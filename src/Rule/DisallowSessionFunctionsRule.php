@@ -40,7 +40,7 @@ class DisallowSessionFunctionsRule implements Rule
 
         if (\in_array($name, self::NOT_ALLOWED_FUNCTIONS, true)) {
             return [
-                RuleErrorBuilder::message(\sprintf('Do not use %s() function in code. Use the Session from the Request instead.', $name))
+                RuleErrorBuilder::message(\sprintf('Do not use %s() function in code. Use the Symfony Session component from the Request object instead.', $name))
                     ->line($node->getLine())
                     ->identifier('shopware.disallowSessionFunctions')
                     ->build(),
