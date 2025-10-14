@@ -52,43 +52,43 @@ class ForbidLocalDiskWriteRuleTest extends RuleTestCase
             ],
             [
                 "Usage of symlink is forbidden to local files. Use temporary directory with sys_get_temp_dir() if needed.\n    💡 Use flysystem instead https://developer.shopware.com/docs/guides/plugins/plugins/framework/filesystem/filesystem.html",
-                59,
+                66,
             ],
             [
                 "Usage of symlink is forbidden to local files. Use temporary directory with sys_get_temp_dir() if needed.\n    💡 Use flysystem instead https://developer.shopware.com/docs/guides/plugins/plugins/framework/filesystem/filesystem.html",
-                62,
+                69,
             ],
             [
                 "Usage of mkdir is forbidden to local files. Use temporary directory with sys_get_temp_dir() if needed.\n    💡 Use flysystem instead https://developer.shopware.com/docs/guides/plugins/plugins/framework/filesystem/filesystem.html",
-                71,
+                78,
             ],
             [
                 "Usage of rmdir is forbidden to local files. Use temporary directory with sys_get_temp_dir() if needed.\n    💡 Use flysystem instead https://developer.shopware.com/docs/guides/plugins/plugins/framework/filesystem/filesystem.html",
-                74,
+                81,
             ],
             [
                 "Usage of unlink is forbidden to local files. Use temporary directory with sys_get_temp_dir() if needed.\n    💡 Use flysystem instead https://developer.shopware.com/docs/guides/plugins/plugins/framework/filesystem/filesystem.html",
-                77,
+                84,
             ],
             [
                 "Usage of rename is forbidden to local files. Use temporary directory with sys_get_temp_dir() if needed.\n    💡 Use flysystem instead https://developer.shopware.com/docs/guides/plugins/plugins/framework/filesystem/filesystem.html",
-                80,
+                87,
             ],
             [
                 "Usage of Symfony Filesystem::dumpFile is forbidden to local files. Use temporary directory with sys_get_temp_dir() if needed.\n    💡 Use flysystem instead https://developer.shopware.com/docs/guides/plugins/plugins/framework/filesystem/filesystem.html",
-                107,
+                114,
             ],
             [
                 "Usage of Symfony Filesystem::mkdir is forbidden to local files. Use temporary directory with sys_get_temp_dir() if needed.\n    💡 Use flysystem instead https://developer.shopware.com/docs/guides/plugins/plugins/framework/filesystem/filesystem.html",
-                108,
+                115,
             ],
             [
                 "Usage of Symfony Filesystem::remove is forbidden to local files. Use temporary directory with sys_get_temp_dir() if needed.\n    💡 Use flysystem instead https://developer.shopware.com/docs/guides/plugins/plugins/framework/filesystem/filesystem.html",
-                109,
+                116,
             ],
             [
                 "Usage of Symfony Filesystem::copy is forbidden to local files. Use temporary directory with sys_get_temp_dir() if needed.\n    💡 Use flysystem instead https://developer.shopware.com/docs/guides/plugins/plugins/framework/filesystem/filesystem.html",
-                110,
+                117,
             ],
         ]);
     }

@@ -55,6 +55,13 @@ $zip->open(sys_get_temp_dir() . '/temp.zip', ZipArchive::CREATE);
 // Valid: ZipArchive create using temp variable
 $zip->open($tempDir . '/temp.zip', ZipArchive::CREATE);
 
+// Valid: ZipArchive create in temp directory using tempnam
+$zip->open(tempnam(sys_get_temp_dir(), 'tempfile'), ZipArchive::CREATE);
+
+// Valid: ZipArchive create using tempnam in temp directory variable
+$tempFile = tempnam(sys_get_temp_dir(), 'tempfile');
+$zip->open($tempFile, ZipArchive::CREATE);
+
 // Invalid: symlink
 symlink('/some/target', '/some/link');
 
