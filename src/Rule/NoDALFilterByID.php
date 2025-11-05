@@ -11,6 +11,7 @@ use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsAnyFilter;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
+use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\MultiFilter;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\NotFilter;
 use PHPStan\Rules\RuleErrorBuilder;
 
@@ -32,8 +33,8 @@ class NoDALFilterByID implements Rule
 
         $className = $node->class->toString();
 
-        // When we find a NotFilter, mark all nested New_ nodes as allowed
-        if ($className === NotFilter::class) {
+        // When we find a MultiFilter/NotFilter, mark all nested New_ nodes as allowed
+        if (in_array($className, [MultiFilter::class, NotFilter::class], true)) {
             $this->markNestedNodesAsAllowed($node);
             return [];
         }
@@ -46,16 +47,16 @@ class NoDALFilterByID implements Rule
         return [];
     }
 
-    private function markNestedNodesAsAllowed(Node $notFilterNode): void
+    private function markNestedNodesAsAllowed(Node $allowedFilterNode): void
     {
         $nodeFinder = new NodeFinder();
 
-        // Find all New_ nodes within this NotFilter
-        $nestedNewNodes = $nodeFinder->findInstanceOf($notFilterNode, New_::class);
+        // Find all New_ nodes within this allowed filter node
+        $nestedNewNodes = $nodeFinder->findInstanceOf($allowedFilterNode, New_::class);
 
         foreach ($nestedNewNodes as $nestedNode) {
-            // Mark this node as being inside a NotFilter
-            $nestedNode->setAttribute('insideNotFilter', true);
+            // Mark this node as being inside an allowed filter
+            $nestedNode->setAttribute('insideAllowedFilter', true);
         }
     }
 
@@ -64,8 +65,8 @@ class NoDALFilterByID implements Rule
      */
     private function checkFilterNode(Node $node, Scope $scope): array
     {
-        // Check if this node is marked as being inside a NotFilter
-        if ($node->getAttribute('insideNotFilter') === true) {
+        // Check if this node is marked as being inside an allowed filter
+        if ($node->getAttribute('insideAllowedFilter') === true) {
             return [];
         }
 
